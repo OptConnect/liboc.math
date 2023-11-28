@@ -1,0 +1,18 @@
+[flake8]
+exclude = .git,__pycache__,.venv
+max-line-length = 88
+import-order-style = google
+
+application-import-names = any
+
+ignore =
+    # Missing docstring for public module
+    D100
+    # Missing docstring in public package
+    D104
+    # line break before binary operator (e.g. `blah \n== blah`)
+    # black throws caution to the wind with warning and it's sometimes easier
+    # to not fight black.
+    W503
+per-file-ignores =
+    tests/*:D101,D102,D103

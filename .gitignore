@@ -1,0 +1,6 @@
+.coverage
+.dir-locals.el
+.envrc
+dist/**
+**/*.egg-info/**
+**/__pycache__/**
