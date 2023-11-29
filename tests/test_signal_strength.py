@@ -1,3 +1,4 @@
+import decimal
 from unittest import TestCase as BaseTestCase
 
 from liboc.math import signal_strength
@@ -26,3 +27,13 @@ class TestCase(BaseTestCase):
             assert (
                 signal_strength.db_to_percent(db) == pct
             ), f"rssi {db} did not calculate to expected percent of {pct}%."
+
+    def test_db_to_percentage__decimal(self):
+        assert (
+            signal_strength.db_to_percent(decimal.Decimal(-45)) == 86
+        ), "rssi Decimal(-45) did not calculate to expected percent of {86}%."
+
+    def test_db_to_percentage__float(self):
+        assert (
+            signal_strength.db_to_percent(float(-45)) == 86
+        ), "rssi float(-45) did not calculate to expected percent of 86%."
