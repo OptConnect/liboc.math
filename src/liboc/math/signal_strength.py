@@ -1,7 +1,13 @@
+import decimal
 import math
+from typing import Union
 
 
-def db_to_percent(rssi: int, perfect_rssi: int = -20, worst_rssi: int = -85) -> int:
+def db_to_percent(
+    rssi: Union[int, decimal.Decimal, float],
+    perfect_rssi: decimal.Decimal = decimal.Decimal(-20),
+    worst_rssi: decimal.Decimal = decimal.Decimal(-85),
+) -> int:
     """Convert signal strength as decibels to percentage for wireless connections.
 
     This function is licensed under GPL v2. See source code for more info.
@@ -28,6 +34,7 @@ def db_to_percent(rssi: int, perfect_rssi: int = -20, worst_rssi: int = -85) -> 
 
     # Source adapted from:
     # https://github.com/torvalds/linux/blob/18d46e76/drivers/net/wireless/intel/ipw2x00/ipw2200.c#L4276
+    rssi = decimal.Decimal(rssi)
 
     signal_quality = (
         100 * (perfect_rssi - worst_rssi) * (perfect_rssi - worst_rssi)
